@@ -1,5 +1,9 @@
 #include <ur_kinematics/ur_kin.h>
 
+#ifdef UR16E_PARAMS
+#include <ur_kinematics/ur16e_kin.h>
+#endif
+
 #include <math.h>
 #include <stdio.h>
 
@@ -83,6 +87,97 @@ namespace ur_kinematics {
     const double d6 =  0.0819;
     #endif
   }
+
+  #ifdef UR16E_PARAMS
+  void ur16e_forward(const double* q, double* T) {
+    forward(q, T);
+  }
+  void ur16e_forward_all(const double* q, double* T1, double* T2, double* T3, 
+                                double* T4, double* T5, double* T6){
+    forward_all(q, T1, T2, T3, T4, T5, T6);
+  }
+  int ur16e_inverse(const double* T, double* q_sols, double q6_des){
+    inverse(T, q_sols, q6_des);
+  }
+  #endif
+
+  #ifdef UR10E_PARAMS
+  void ur10e_forward(const double* q, double* T) {
+    forward(q, T);
+  }
+  void ur10e_forward_all(const double* q, double* T1, double* T2, double* T3, 
+                                double* T4, double* T5, double* T6){
+    forward_all(q, T1, T2, T3, T4, T5, T6);
+  }
+  int ur10e_inverse(const double* T, double* q_sols, double q6_des){
+    inverse(T, q_sols, q6_des);
+  }
+  #endif
+
+  #ifdef UR10_PARAMS
+  void ur10_forward(const double* q, double* T) {
+    forward(q, T);
+  }
+  void ur10_forward_all(const double* q, double* T1, double* T2, double* T3, 
+                                double* T4, double* T5, double* T6){
+    forward_all(q, T1, T2, T3, T4, T5, T6);
+  }
+  int ur10_inverse(const double* T, double* q_sols, double q6_des){
+    inverse(T, q_sols, q6_des);
+  }
+  #endif
+
+  #ifdef UR5E_PARAMS
+  void ur5e_forward(const double* q, double* T) {
+    forward(q, T);
+  }
+  void ur5e_forward_all(const double* q, double* T1, double* T2, double* T3, 
+                                double* T4, double* T5, double* T6){
+    forward_all(q, T1, T2, T3, T4, T5, T6);
+  }
+  int ur5e_inverse(const double* T, double* q_sols, double q6_des){
+    inverse(T, q_sols, q6_des);
+  }
+  #endif
+
+  #ifdef UR5_PARAMS
+  void ur5_forward(const double* q, double* T) {
+    forward(q, T);
+  }
+  void ur5_forward_all(const double* q, double* T1, double* T2, double* T3, 
+                                double* T4, double* T5, double* T6){
+    forward_all(q, T1, T2, T3, T4, T5, T6);
+  }
+  int ur5_inverse(const double* T, double* q_sols, double q6_des){
+    inverse(T, q_sols, q6_des);
+  }
+  #endif
+
+  #ifdef UR3E_PARAMS
+  void ur3e_forward(const double* q, double* T) {
+    forward(q, T);
+  }
+  void ur3e_forward_all(const double* q, double* T1, double* T2, double* T3, 
+                                double* T4, double* T5, double* T6){
+    forward_all(q, T1, T2, T3, T4, T5, T6);
+  }
+  int ur3e_inverse(const double* T, double* q_sols, double q6_des){
+    inverse(T, q_sols, q6_des);
+  }
+  #endif
+
+  #ifdef UR3_PARAMS
+  void ur3_forward(const double* q, double* T) {
+    forward(q, T);
+  }
+  void ur3_forward_all(const double* q, double* T1, double* T2, double* T3, 
+                                double* T4, double* T5, double* T6){
+    forward_all(q, T1, T2, T3, T4, T5, T6);
+  }
+  int ur3_inverse(const double* T, double* q_sols, double q6_des){
+    inverse(T, q_sols, q6_des);
+  }
+  #endif
 
   void forward(const double* q, double* T) {
     double s1 = sin(*q), c1 = cos(*q); q++;
